@@ -10,10 +10,10 @@ export default props => {
         }
     }
     return(
-    <div role='form' className="todoForm">
+    <div role='form' className="cadastroFrom">
             <div className="col-xs-12 col-sm-9 col-md-10">
                 <input id='description' className='form-control'
-                    placeholder="Adicione uma tarefa"
+                    placeholder="Nome"
                     onChange={props.handleChange}
                     onKeyUp={keyHandler}
                     value={props.description}></input>

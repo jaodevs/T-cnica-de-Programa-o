@@ -8,5 +8,9 @@ export default props => (
         <p>Somos a turma +TOP</p>
         <h2>Missão e Visão</h2>
         <p>Aqui fazemos Sistemas Brutos</p>
+        <h2>João vitor Vasconcellos Cintra</h2>
+        <p>2ºDSM</p>
+        
+        
     </div>
 );
