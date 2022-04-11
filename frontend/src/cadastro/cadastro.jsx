@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import axios from 'axios'
+import axios from 'axios';
 
 import PageHeader from "../template/pageHeader";
 import CadastroForm from "./cadastroForm";
-import CadastroList from "./cadastrolist";
+import CadastroList from "./cadastroList";
+
 
 
 const URL = 'http://localhost:3003/api/cadastros'
@@ -17,8 +18,7 @@ export default class Cadastro extends Component {
         this.handleRemove = this.handleRemove.bind(this)
         this.handleSearch = this.handleSearch.bind(this)
         this.handleClear = this.handleClear.bind(this)
-        this.handleMarkAsDone = this.handleMarkAsDone.bind(this)
-
+        
         this.refresh()
     }
 
@@ -28,50 +28,40 @@ export default class Cadastro extends Component {
         axios.get(`${URL}?sort=-createdAt${search}`)
             .then(resp => this.setState({ ...this.state, description: '', list: resp.data }))
     }
-    handleChange(e) {
-        this.setState({ ...this.state, description: e.target.value })
+    handleChange(a) {
+        this.setState({ ...this.state, description: a.target.value })
     }
-
     handleSearch() {
         this.refresh(this.state.description)
     }
-
-
     handleAdd() {
         const description = this.state.description
         axios.post(URL, { description })
             .then(resp => this.refresh())
     }
-
     handleClear() {
         this.refresh()
     }
-
-    handleRemove() {
+    handleRemove(cadastro) {
         axios.delete(`${URL}/${cadastro._id}`)
             .then(resp => this.refresh(this.state.description))
     }
-    handleMarkAsDone(todo) {
-        axios.put(`${URL}/${todo._id}`, { ...todo, done: true })
-            .then(resp => this.refresh(this.state.description))
-    }
-
+    
+    
     render() {
         return (
             <div>
                 <PageHeader name='Cadastro' small='Pessoas'></PageHeader>
-
                 <CadastroForm
                     description={this.state.description}
                     handleChange={this.handleChange}
                     handleAdd={this.handleAdd}
                     handleSearch={this.handleSearch}
                     handleClear={this.handleClear} />
-
                 <CadastroList
                     list={this.state.list}
-                    handleRemove={this.handleRemove} 
-                    handleMarkAsDone={this.handleMarkAsDone}/>
+                    handleRemove={this.handleRemove} />
+                   
             </div>
         );
     }

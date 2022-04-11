@@ -1,10 +1,16 @@
 .btn {
     margin-right: 5px;
+    
+    
+    
+   
+
+    
 }
 
 .markedAsDone {
     text-decoration: line-through rgb(255, 0, 0);
-    color: rgb(17, 0, 255);
+    color: rgb(0, 0, 0);
 }
 
 .tableActions {
@@ -13,4 +19,7 @@
 
 .todoForm {
     padding-bottom: 60px;
+}
+.castroFrom{
+
 }
