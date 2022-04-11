@@ -6,4 +6,4 @@ const cadastroSchema = new mongoose.Schema({
     createdAt: {type: Date, default: Date.now}
 })
 
-module.exports = restful.model('cadastro', cadastroSchema )
+module.exports = restful.model('Cadastro', cadastroSchema )
