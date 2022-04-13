@@ -18,7 +18,7 @@ export default class Cadastro extends Component {
         this.handleRemove = this.handleRemove.bind(this)
         this.handleSearch = this.handleSearch.bind(this)
         this.handleClear = this.handleClear.bind(this)
-        
+
         this.refresh()
     }
 
@@ -46,8 +46,8 @@ export default class Cadastro extends Component {
         axios.delete(`${URL}/${cadastro._id}`)
             .then(resp => this.refresh(this.state.description))
     }
-    
-    
+
+
     render() {
         return (
             <div>
@@ -61,7 +61,7 @@ export default class Cadastro extends Component {
                 <CadastroList
                     list={this.state.list}
                     handleRemove={this.handleRemove} />
-                   
+
             </div>
         );
     }
