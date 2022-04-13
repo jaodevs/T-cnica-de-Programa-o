@@ -25,7 +25,7 @@ export default class Cadastro extends Component {
 
     refresh(description = '') {
         const search = description ? `&description__regex=/${description}/` : ''
-        axios.get(`${URL}?sort=-createdAt${search}`)
+        axios.get(`${URL}?sort=createdAt${search}`)
             .then(resp => this.setState({ ...this.state, description: '', list: resp.data }))
     }
     handleChange(a) {
@@ -36,8 +36,11 @@ export default class Cadastro extends Component {
     }
     handleAdd() {
         const description = this.state.description
-        axios.post(URL, { description })
+        const createdAt = Date.now
+        axios.post(URL, { description, createdAt})
             .then(resp => this.refresh())
+
+
     }
     handleClear() {
         this.refresh()
@@ -54,6 +57,7 @@ export default class Cadastro extends Component {
                 <PageHeader name='Cadastro' small='Pessoas'></PageHeader>
                 <CadastroForm
                     description={this.state.description}
+                    createdAt = {Date.now}
                     handleChange={this.handleChange}
                     handleAdd={this.handleAdd}
                     handleSearch={this.handleSearch}

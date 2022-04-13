@@ -7,7 +7,7 @@ export default props => {
         return list.map(cadastro => (
             <tr key={cadastro._id}>
                 <td className={cadastro? '' : ''}>{cadastro.description}</td>
-                <td className={cadastro? '' : ''}>{cadastro.data}</td>
+                <td className={cadastro? '' : ''}>{cadastro.createdAt}</td>
                 <td>
                     <IconButton style='danger' icon='trash-o' hide={!cadastro}
                         onClick={() => props.handleRemove(cadastro)}></IconButton>
@@ -20,7 +20,7 @@ export default props => {
             <thead>
                 <tr>
                     <th>Nomes</th>
-                    <th>Data/Hora</th>
+                    <th className="datahr">Data/Hora</th>
                     <th className="tableActions">Excluir</th>
                 </tr>
             </thead>
